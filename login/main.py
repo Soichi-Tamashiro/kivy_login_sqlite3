@@ -1,20 +1,83 @@
 # -*- coding: utf-8 -*-
+import sqlite3
+import os
+
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
+
+from kivy.config import Config
+Config.set("graphics", "width", "800")
+Config.set("graphics", "heighth", "600")
+
+
+def connect_to_database(path):
+    try:
+        con = sqlite3.connect(path)
+        cursor = con.cursor()
+        create_table_users(cursor)
+        create_table_data(cursor)
+        con.commit()
+        con.close()
+    except Exception as e:
+        print(e)
+    try:
+        con = sqlite3.connect(path)
+        cursor = con.cursor()
+        create_table_data(cursor)
+        con.commit()
+        con.close()
+    except Exception as e:
+        print(e)
+
+
+def create_table_users(cursor):
+    cursor.execute(
+        '''
+        CREATE TABLE Users(
+        ID        INT   PRIMARY KEY  NOT NULL,
+        Nombre    TEXT               NOT NULL,
+        Password  TEXT               NOT NULL,
+        Cargo     TEXT               NOT NULL
+        )
+        '''
+    )
+
+
+def create_table_data(cursor):
+    cursor.execute(
+        '''
+        CREATE TABLE Data(
+        ID        INT   PRIMARY KEY  NOT NULL,
+        Empresa   TEXT               NOT NULL,
+        Bascula   TEXT               NOT NULL,
+        Placa     TEXT               NOT NULL
+        )
+        '''
+    )
 
 
 class MainWid(ScreenManager):
     def __init__(self, **kwargs):
         super(MainWid, self).__init__()
-        self.StartWid = StartWid()
+        self.APP_PATH = os.getcwd()
+        self.DB_PATH = self.APP_PATH + "/data/my_database.db"
+        self.StartWid = StartWid(self)
 
-        wid = Screen(name="start")
+        wid = Screen(name='start')
         wid.add_widget(self.StartWid)
         self.add_widget(wid)
 
 
 class StartWid(BoxLayout):
+    def __init__(self, mainwid, **kwargs):
+        super(StartWid, self).__init__()
+        self.mainwid = mainwid
+
+    def create_database(self):
+        print(self.mainwid.DB_PATH)
+        connect_to_database(self.mainwid.DB_PATH)
+
     def validate_user(self):
         user = self.ids.username_field
         pwd = self.ids.pwd_field
