@@ -1,5 +1,24 @@
+#:import hex kivy.utils.get_color_from_hex
+
 <FlatButton@ButtonBehavior+Label>:
     font_size: 16
+<MenuLabel@Label>:
+    font_size: root.size[0]/11
+<MenuButton@Button>:
+    background_color: hex('#0f7272')
+    background_normal: ''
+    on_press:
+        print("save all values in the view to a dictionary")
+<LineDiv@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    size_hint_y: None
+    height: 1
+
 <MainWid>:
     canvas.before:
         Color:
@@ -8,7 +27,7 @@
             size: self.size
             pos: self.pos
 <StartWid>:
-    id: main_win
+    id: star_wid
     orientation: "vertical"
     spacing: 10
     space_x: self.size[0] / 3
@@ -23,7 +42,7 @@
         height: 50
         canvas.before:
             Color:
-                rgba: (.06,.45,.45,1)
+                rgba: hex('#0f7272')
             Rectangle:
                 size: self.size
                 pos: self.pos
@@ -37,7 +56,7 @@
             size_hint_x: .1
     BoxLayout:
         orientation: "vertical"
-        padding: main_win.space_x, 10
+        padding: star_wid.space_x, 10
         # spacing: 20
         BoxLayout:
             orientation: "vertical"
@@ -78,10 +97,153 @@
             height: root.size[0]/18
             text: "Sign In"
             font_size: root.size[0]/50
-            background_color: (.06,.45,.45,1)
+            background_color: hex('#0f7272')
             background_normal: ''
             on_release:
                 root.validate_user()
                 root.create_database()
         Label:
             id: sp2
+
+<DefaultWid>:
+    id: default_wid
+    orientation: "vertical"
+    spacing: 10
+    space_x: self.size[0] / 3
+    canvas.before:
+        Color:
+            rgba: (1,1,1,1)
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    BoxLayout:
+        size_hint_y: None
+        height: 50
+        canvas.before:
+            Color:
+                rgba: hex('#0f7272')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+            text: "Pesaje"
+            bold: True
+            size_hint_x: .9
+
+        FlatButton:
+            text: "x"
+            size_hint_x: .1
+    BoxLayout:
+        orientation: "horizontal"
+        BoxLayout:
+            id: menu_scroll
+            canvas.before:
+                Color:
+                    rgba: hex('#0f7272')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint_x: None
+            width: root.size[0]/5
+            orientation: "vertical"
+            Label:
+                text: " Menu"
+                size_hint_y: None
+                height: 50
+            LineDiv:
+
+            ScrollView:
+                size: self.size
+                GridLayout:
+                    id: container
+                    # padding : [10,10,10,10]
+                    # spacing: 5
+                    size_hint_y: None
+                    cols:1
+                    row_default_height: root.height*0.05
+                    height: self.minimum_height
+                    MenuLabel:
+                        text: "PESAJE"
+                    MenuButton:
+                        text: "- Pesaje General"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Ciclos de Pesaje"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    LineDiv:
+                    MenuLabel:
+                        text: "GENERAL"
+                    MenuButton:
+                        text: "- Bascula"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Impresion"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Reportes"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    LineDiv:
+                    MenuLabel:
+                        text: "EMPERSA Y VEHICULO"
+                    MenuButton:
+                        text: "- Empresa"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Cliente / Proveedor"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Conductor"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Producto"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Conjunto de Eje"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Tipo de Vehiculo"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Vehiculo"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    LineDiv:
+                    MenuLabel:
+                        text: "SEGURIDAD"
+                    MenuButton:
+                        text: "- Usuario"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Rol y Permisos"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Cambiar Clave"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    MenuButton:
+                        text: "- Configuracion"
+                        on_release:
+                            print(" Menu Button Pressed")
+                    # BoxLayout:
+
+        BoxLayout:
+            id: window_view_1
+            canvas.before:
+                Color:
+                    rgba: hex('#6fc8c8')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos

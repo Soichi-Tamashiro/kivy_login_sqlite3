@@ -5,6 +5,7 @@ import os
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.button import Button
 
 from kivy.config import Config
 Config.set("graphics", "width", "800")
@@ -63,11 +64,22 @@ class MainWid(ScreenManager):
         self.APP_PATH = os.getcwd()
         self.DB_PATH = self.APP_PATH + "/data/my_database.db"
         self.StartWid = StartWid(self)
+        self.DefaultWid = DefaultWid(self)
 
         wid = Screen(name='start')
         wid.add_widget(self.StartWid)
         self.add_widget(wid)
+        wid = Screen(name='default')
+        wid.add_widget(self.DefaultWid)
+        self.add_widget(wid)
 
+        self.goto_start()
+
+    def goto_start(self):
+        self.current = 'start'
+
+    def goto_default(self):
+        self.current = 'default'
 
 class StartWid(BoxLayout):
     def __init__(self, mainwid, **kwargs):
@@ -75,8 +87,8 @@ class StartWid(BoxLayout):
         self.mainwid = mainwid
 
     def create_database(self):
-        print(self.mainwid.DB_PATH)
         connect_to_database(self.mainwid.DB_PATH)
+        self.mainwid.goto_default()
 
     def validate_user(self):
         user = self.ids.username_field
@@ -92,7 +104,10 @@ class StartWid(BoxLayout):
             if (uname == 'admin' and passw == 'admin'):
                 info.text = '[color=#00FF00]Logged In succesfully !!![/color]'
 
-    pass
+class DefaultWid(BoxLayout):
+    def __init__(self, mainwid, **kwargs):
+        super(DefaultWid, self).__init__()
+        self.mainwid = mainwid
 
 
 class MainApp(App):
