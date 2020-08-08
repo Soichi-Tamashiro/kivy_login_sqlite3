@@ -82,6 +82,7 @@ class MainWid(ScreenManager):
     def goto_default(self):
         self.current = 'default'
 
+
 class StartWid(BoxLayout):
     def __init__(self, mainwid, **kwargs):
         super(StartWid, self).__init__()
@@ -104,6 +105,7 @@ class StartWid(BoxLayout):
         else:
             if (uname == 'admin' and passw == 'admin'):
                 info.text = '[color=#00FF00]Logged In succesfully !!![/color]'
+
 
 class DefaultWid(BoxLayout):
     def __init__(self, mainwid, **kwargs):
