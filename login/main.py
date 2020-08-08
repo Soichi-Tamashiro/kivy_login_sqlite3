@@ -6,7 +6,7 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
-from kivymd.theming import ThemeManager
+# from kivymd.theming import ThemeManager
 
 from kivy.config import Config
 Config.set("graphics", "width", "800")
