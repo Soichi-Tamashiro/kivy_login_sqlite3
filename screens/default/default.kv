@@ -41,20 +41,7 @@
         height: root.height*0.05
         Label:
             text: 'Pesaje General de Vehiculo'
-    BoxLayout:
-        orientation: 'horizontal'
-        size_hint_y: None
-        height: root.height*0.05
-        TopMenuButton:
-            text: 'Gestion Pesaje Vehiculo'
-            size_hint_x: None
-            width: root.size[0]/3
-        TopMenuButton:
-            text: 'Gestion Consulta Vehiculo'
-            size_hint_x: None
-            width: root.size[0]/3
-        BoxLayout:
-    BoxLayout:
+
 
 
 # ------------------------------------------------------------------------------
@@ -218,6 +205,48 @@
                                 size: root.size
                                 pos: self.pos
                         PesajeGeneral:
+                            # BoxLayout:
+                            #     orientation: 'horizontal'
+                            #     size_hint_y: None
+                            #     height: root.height*0.05
+                            #     TopMenuButton:
+                            #         text: 'Gestion Pesaje Vehiculo'
+                            #         size_hint_x: None
+                            #         width: root.size[0]/3
+                            #         on_state:
+                            #             root.change_screen_pesaje(self)
+                            #             print(" Menu Button Pressed")
+                            #     TopMenuButton:
+                            #         text: 'Gestion Consulta Vehiculo'
+                            #         size_hint_x: None
+                            #         width: root.size[0]/3
+                            #         on_state:
+                            #             root.change_screen_pesaje(self)
+                            #             print(" Menu Button Pressed")
+                            #     BoxLayout:
+                            TabbedPanel:
+                                TabbedPanelItem:
+                                    text: 'Gestion Pesaje Vehiculo'
+                                    BoxLayout:
+                                        canvas.before:
+                                            Color:
+                                                rgba: hex('#7a37ad')
+                                            Rectangle:
+                                                size: self.size
+                                                pos: self.pos
+                                TabbedPanelItem:
+                                    text: 'Gestion Consulta Vehiculo'
+                                    BoxLayout:
+                                        canvas.before:
+                                            Color:
+                                                rgba: hex('#41d790')
+                                            Rectangle:
+                                                size: self.size
+                                                pos: self.pos
+                            BoxLayout:
+
+
+
 
                 Screen:
                     id: scrn_bascula
@@ -236,6 +265,26 @@
                         canvas.before:
                             Color:
                                 rgba: hex('#f52828')
+                            Rectangle:
+                                size: root.size
+                                pos: self.pos
+                Screen:
+                    id: scrn_pesaje
+                    name: 'scrn_pesaje'
+                    BoxLayout:
+                        canvas.before:
+                            Color:
+                                rgba: hex('#7a37ad')
+                            Rectangle:
+                                size: root.size
+                                pos: self.pos
+                Screen:
+                    id: scrn_consulta
+                    name: 'scrn_consulta'
+                    BoxLayout:
+                        canvas.before:
+                            Color:
+                                rgba: hex('#41d790')
                             Rectangle:
                                 size: root.size
                                 pos: self.pos

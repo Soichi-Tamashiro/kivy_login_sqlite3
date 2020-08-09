@@ -6,6 +6,7 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
+from kivy.uix.tabbedpanel import TabbedPanel
 
 from kivy.lang import Builder
 
@@ -31,6 +32,15 @@ class MainWid(BoxLayout):
             self.ids.scrn_mngr.current = 'scrn_empresa'
         else:
             pass
+
+    def change_screen_pesaje(self, instance):
+        if instance.text == 'Gestion Pesaje Vehiculo':
+            self.ids.scrn_mngr.current = 'scrn_pesaje'
+        elif instance.text == 'Gestion Consulta Vehiculo':
+            self.ids.scrn_mngr.current = 'scrn_consulta'
+        else:
+            pass
+
 
 class Default(App):
     def build(self):
