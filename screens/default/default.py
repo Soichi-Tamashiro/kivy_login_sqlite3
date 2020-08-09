@@ -8,6 +8,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
 
+from utils.table import TableWid
+
 from kivy.lang import Builder
 
 # Builder.load_file('default/default.kv')
@@ -18,8 +20,11 @@ Config.set("graphics", "minimum_height", "600")
 
 
 class MainWid(BoxLayout):
+    table_widget = TableWid()
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.ids.container2.add_widget(self.table_widget)
     # pesaje_gen = self.ids.scrn_pesaje_gen
     #
 
@@ -36,6 +41,7 @@ class MainWid(BoxLayout):
     def change_screen_pesaje(self, instance):
         if instance.text == 'Gestion Pesaje Vehiculo':
             self.ids.scrn_mngr.current = 'scrn_pesaje'
+
         elif instance.text == 'Gestion Consulta Vehiculo':
             self.ids.scrn_mngr.current = 'scrn_consulta'
         else:
