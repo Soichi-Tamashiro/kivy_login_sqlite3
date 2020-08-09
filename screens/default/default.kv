@@ -4,27 +4,66 @@
     font_size: 16
 <MenuLabel@Label>:
     font_size: root.size[0]/11
-<MenuButton@Button>:
+<SideMenuButton@ToggleButton>:
     background_color: hex('#0f7272')
     background_normal: ''
-    on_press:
+    group: 'default_navs'
+    on_state:
+        print("save all values in the view to a dictionary")
+    # on_press:
+    #     print("save all values in the view to a dictionary")
+<TopMenuButton@ToggleButton>:
+    background_color: hex('#189ab4')
+    background_normal: ''
+    group: 'top_navs'
+    on_state:
         print("save all values in the view to a dictionary")
 <LineDiv@BoxLayout>:
     canvas.before:
         Color:
-            rgba: (1,1,1,1)
+            rgba: hex('#ffffff')
         Rectangle:
             size: self.size
             pos: self.pos
     size_hint_y: None
     height: 1
 # ------------------------------------------------------------------------------
-# ------------------------------------------------------------------------------
+<PesajeGeneral@BoxLayout>:
+    orientation: 'vertical'
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: hex('#05445e')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        size_hint_y: None
+        height: root.height*0.05
+        Label:
+            text: 'Pesaje General de Vehiculo'
+    BoxLayout:
+        orientation: 'horizontal'
+        size_hint_y: None
+        height: root.height*0.05
+        TopMenuButton:
+            text: 'Gestion Pesaje Vehiculo'
+            size_hint_x: None
+            width: root.size[0]/3
+        TopMenuButton:
+            text: 'Gestion Consulta Vehiculo'
+            size_hint_x: None
+            width: root.size[0]/3
+        BoxLayout:
+    BoxLayout:
 
+
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
+# ------------------------------------------------------------------------------
 <MainWid>:
     id: default_wid
     orientation: "vertical"
-    spacing: 10
+    spacing: 1
     space_x: self.size[0] / 3
     canvas.before:
         Color:
@@ -42,7 +81,7 @@
                 size: self.size
                 pos: self.pos
         Label:
-            text: "Pesaje"
+            text: "SOFTWARE DE PESAJE 2020"
             bold: True
             size_hint_x: .9
 
@@ -80,86 +119,143 @@
                     height: self.minimum_height
                     MenuLabel:
                         text: "PESAJE"
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Pesaje General"
-                        on_release:
+                        on_state:
+                            root.change_screen(self)
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Ciclos de Pesaje"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
                     LineDiv:
                     MenuLabel:
                         text: "GENERAL"
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Bascula"
-                        on_release:
+                        on_state:
+                            root.change_screen(self)
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Impresion"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Reportes"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
                     LineDiv:
                     MenuLabel:
                         text: "EMPERSA Y VEHICULO"
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Empresa"
-                        on_release:
+                        on_state:
+                            root.change_screen(self)
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Cliente / Proveedor"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Conductor"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Producto"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Conjunto de Eje"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Tipo de Vehiculo"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Vehiculo"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
                     LineDiv:
                     MenuLabel:
                         text: "SEGURIDAD"
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Usuario"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Rol y Permisos"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Cambiar Clave"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
-                    MenuButton:
+                    SideMenuButton:
                         text: "- Configuracion"
-                        on_release:
+                        on_state:
                             print(" Menu Button Pressed")
                     # BoxLayout:
 
         BoxLayout:
-            id: window_view_1
-            canvas.before:
-                Color:
-                    rgba: hex('#6fc8c8')
-                Rectangle:
-                    size: self.size
-                    pos: self.pos
+            id: window_view
+            # canvas.before:
+            #     Color:
+            #         rgba: hex('#6fc8c8')
+            #     Rectangle:
+            #         size: self.size
+            #         pos: self.pos
+            ScreenManager:
+                id: scrn_mngr
+                Screen:
+                    id: scrn_pesaje_gen
+                    name: 'scrn_pesaje_gen'
+                    BoxLayout:
+                        canvas.before:
+                            Color:
+                                rgba: hex('#ffffff')
+                            Rectangle:
+                                size: root.size
+                                pos: self.pos
+                        PesajeGeneral:
+
+                Screen:
+                    id: scrn_bascula
+                    name: 'scrn_bascula'
+                    BoxLayout:
+                        canvas.before:
+                            Color:
+                                rgba: hex('#ad9037')
+                            Rectangle:
+                                size: root.size
+                                pos: self.pos
+                Screen:
+                    id: scrn_empresa
+                    name: 'scrn_empresa'
+                    BoxLayout:
+                        canvas.before:
+                            Color:
+                                rgba: hex('#f52828')
+                            Rectangle:
+                                size: root.size
+                                pos: self.pos
+
+
+    BoxLayout:
+        id: footer
+        size_hint_y: None
+        height: 20
+        canvas.before:
+            Color:
+                rgba: hex('#0f7272')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        Label:
+
+            size_hint_x: .9
+
+        FlatButton:
+            text: "Acerda de ..."
+            # bold: True
+            size_hint_x: .1

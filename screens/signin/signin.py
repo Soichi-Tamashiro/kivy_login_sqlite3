@@ -2,7 +2,13 @@ from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.lang import Builder
 
+from kivy.config import Config
+Config.set("graphics", "width", "300")
+Config.set("graphics", "heighth", "600")
+Config.set("graphics", "minimum_width", "800")
+Config.set("graphics", "minimum_height", "600")
 # Builder.load_file('signin/signin.kv')
+
 
 class SigninWindow(BoxLayout):
     def __init__(self, **kwargs):
@@ -22,6 +28,7 @@ class SigninWindow(BoxLayout):
             if (uname == 'admin' and passw == 'admin'):
                 info.text = '[color=#00FF00]Logged In succesfully !!![/color]'
                 self.parent.parent.current = 'scrn_def'
+
 
 class SigninApp(App):
     def build(self):

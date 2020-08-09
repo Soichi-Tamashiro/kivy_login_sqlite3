@@ -12,8 +12,8 @@ from kivy.lang import Builder
 Builder.load_file('default/default.kv')
 
 from kivy.config import Config
-Config.set("graphics", "width", "800")
-Config.set("graphics", "heighth", "600")
+Config.set("graphics", "minimum_width", "800")
+Config.set("graphics", "minimum_height", "600")
 
 
 class MainWid(BoxLayout):

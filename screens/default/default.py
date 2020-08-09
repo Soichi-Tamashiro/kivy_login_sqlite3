@@ -12,14 +12,25 @@ from kivy.lang import Builder
 # Builder.load_file('default/default.kv')
 
 from kivy.config import Config
-Config.set("graphics", "width", "800")
-Config.set("graphics", "heighth", "600")
+Config.set("graphics", "minimum_width", "800")
+Config.set("graphics", "minimum_height", "600")
 
 
 class MainWid(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+    # pesaje_gen = self.ids.scrn_pesaje_gen
+    #
 
+    def change_screen(self, instance):
+        if instance.text == '- Bascula':
+            self.ids.scrn_mngr.current = 'scrn_bascula'
+        elif instance.text == '- Pesaje General':
+            self.ids.scrn_mngr.current = 'scrn_pesaje_gen'
+        elif instance.text == '- Empresa':
+            self.ids.scrn_mngr.current = 'scrn_empresa'
+        else:
+            pass
 
 class Default(App):
     def build(self):
