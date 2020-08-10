@@ -1,0 +1,33 @@
+#:import hex kivy.utils.get_color_from_hex
+<MainWid>:
+    canvas.before:
+        Color:
+            rgba: hex('#6fc8c8')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    do_default_tab: False
+    tab_width: root.size[0]/4
+    TabbedPanelItem:
+        text: 'Gestion Pesaje Vehiculo'
+        background_color: hex('#7a37ad')
+        background_normal: ''
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: hex('#7a37ad')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+    TabbedPanelItem:
+        text: 'Gestion Consulta Vehiculo'
+        background_color: hex('#41d790')
+        background_normal: ''
+        BoxLayout:
+            canvas.before:
+                Color:
+                    rgba: hex('#41d790')
+                Rectangle:
+                    size: self.size
+                    pos: self.pos

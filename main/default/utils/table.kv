@@ -1,0 +1,10 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<MainWid>:
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: hex('#4186d7')
+            Rectangle:
+                size: self.size
+                pos: self.pos
