@@ -9,67 +9,6 @@
             pos: self.pos
     orientation: 'vertical'
 
-<IndexPeso@GridLayout>:
-    canvas.before:
-        Color:
-            rgba: hex('#000000')
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    rows:1
-    size_hint_y: .25
-    # height : 16
-    padding : [1,1,1,1]
-    spacing: 1
-    PesajeGeneralCuadroIndex:
-        size_hint_x: None
-        width: root.size[0]/80
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Ticket'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Empresa'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Bascula'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Placa'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Ciclo'
-        Label:
-            text:'Pesaje'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Fecha'
-        Label:
-            text:'Entrada'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Peso'
-        Label:
-            text:'Entrada'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Fecha'
-        Label:
-            text:'Salida'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Peso'
-        Label:
-            text:'Salida'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Peso'
-        Label:
-            text:'Neto'
-    PesajeGeneralCuadroIndex:
-        size_hint_x: None
-        width: root.size[0]/80
-
 <PesajeGeneral>:
     orientation: 'vertical'
     BoxLayout:
@@ -127,26 +66,8 @@
                     Label:
                         text:'Search'
                 BoxLayout:
-                    orientation: 'vertical'
-                    IndexPeso:
-                    ScrollView:
-                        size: self.size
-                        GridLayout:
-                            id: container2
-                            # padding : [10,10,10,10]
-                            # spacing: 5
-                            size_hint_y: None
-                            cols:1
-                            row_default_height: root.height*0.05
-                            height: self.minimum_height
-                            # IndexPeso2:
-                            # IndexPeso2:
-                            # IndexPeso2:
-                            # IndexPeso2:
-                            # IndexPeso2:
-                            # IndexPeso2:
-                            # IndexPeso2:
-                            # IndexPeso2:
+                    id: tabla_pesaje
+
 
                 BoxLayout:
                     canvas.before:

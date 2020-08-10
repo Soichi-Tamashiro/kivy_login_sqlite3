@@ -7,25 +7,26 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
+from kivy.uix.gridlayout import GridLayout
 
 from kivy.lang import Builder
 
-Builder.load_file('pesaje/pesaje_general.kv')
+Builder.load_file('pesaje/pesajetable1/pesajetable.kv')
 
 from kivy.config import Config
 Config.set("graphics", "minimum_width", "800")
 Config.set("graphics", "minimum_height", "600")
 
 
-class PesajeGeneral(BoxLayout):
+class PesajeTable(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class pesaje_general(App):
-    def build(self):
-        return PesajeGeneral()
-
-
-if __name__ == '__main__':
-    pesaje_general().run()
+# class pesajetable(App):
+#     def build(self):
+#         return PesajeTable()
+#
+#
+# if __name__ == '__main__':
+#     pesajetable().run()
