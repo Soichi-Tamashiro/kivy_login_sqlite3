@@ -2,6 +2,7 @@
 from kivy.config import Config
 import sqlite3
 import os
+import webbrowser 
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
@@ -38,6 +39,10 @@ class MainWid(BoxLayout):
             self.ids.scrn_mngr.current = 'scrn_empresa'
         else:
             pass
+
+    def acerca_de(self, instance):
+        url = "https://github.com/Soichi-Tamashiro"
+        webbrowser.open_new(url)
 
     # def change_screen_pesaje(self, instance):
     #     if instance.text == 'Gestion Pesaje Vehiculo':

@@ -34,7 +34,11 @@
         tab_width: root.size[0]*.4
         TabbedPanelItem:
             text: 'Gestion Pesaje Vehiculo'
+            # text_size: root.width, None
+            # size: self.texture_size
             # font_size: mm(5)
+            outline_width: .5
+            # outline_color: hex('#ffffff')
             bold: True
             background_color: hex('#0f7272')
             background_normal: ''
@@ -88,7 +92,10 @@
                         text: 'botones'
         TabbedPanelItem:
             text: 'Gestion Consulta Vehiculo'
+            outline_width: .5
             bold: True
+            # text_size: root.width, None
+            # size: self.texture_size
             background_color: hex('#0f7272')
             background_normal: ''
             BoxLayout:

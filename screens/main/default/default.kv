@@ -81,6 +81,8 @@
 
             ScrollView:
                 size: self.size
+                bar_color: hex('#f0960e')
+                bar_inactive_color: hex('#ad7f37')
                 GridLayout:
                     id: container
                     # padding : [10,10,10,10]
@@ -252,6 +254,9 @@
             size_hint_x: .9
 
         FlatButton:
-            text: "Acerda de ..."
+            text: "Acerca de ..."
+            underline: True
             # bold: True
             size_hint_x: .1
+            on_press:
+                root.acerca_de(self)
