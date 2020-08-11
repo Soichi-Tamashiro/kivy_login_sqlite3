@@ -11,7 +11,7 @@ from kivy.uix.gridlayout import GridLayout
 
 from kivy.lang import Builder
 
-Builder.load_file('pesajetable1/pesajetable.kv')
+Builder.load_file('pesaje_table/pesaje_table.kv')
 
 from kivy.config import Config
 Config.set("graphics", "minimum_width", "800")
@@ -23,10 +23,10 @@ class PesajeTable(BoxLayout):
         super().__init__(**kwargs)
 
 
-class pesajetable(App):
+class pesaje_table(App):
     def build(self):
         return PesajeTable()
 
 
 if __name__ == '__main__':
-    pesajetable().run()
+    pesaje_table().run()

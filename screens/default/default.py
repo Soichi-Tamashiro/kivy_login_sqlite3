@@ -8,9 +8,9 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
 
-from utils.table import TableWid
-from pesaje.pesajegeneral import PesajeGeneral
-from pesaje.pesajetable1.pesajetable import PesajeTable
+# from utils.table import TableWid
+from pesaje.pesaje_general import PesajeGeneral
+# from pesajetable1.pesajetable import PesajeTable
 from kivy.lang import Builder
 
 # Builder.load_file('default/default.kv')
@@ -21,13 +21,13 @@ Config.set("graphics", "minimum_height", "600")
 
 
 class MainWid(BoxLayout):
-    # table_widget = TableWid()
+    ## table_widget = TableWid()
     pesaje_gen_widget = PesajeGeneral()
 
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        # self.ids.container2.add_widget(self.table_widget)
+        ## self.ids.container2.add_widget(self.table_widget)
         self.ids.scrn_pesaje_gen.add_widget(self.pesaje_gen_widget)
 
 

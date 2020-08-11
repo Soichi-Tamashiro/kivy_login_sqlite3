@@ -9,13 +9,13 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
-from pesajetable.pesaje_table import PesajeTable
+from pesaje_table.pesaje_table import PesajeTable
 
 
-# Builder.load_file('default/default.kv')
+# Builder.load_file('pesaje/pesaje_general.kv')
 
-Config.set("graphics", "minimum_width", "800")
-Config.set("graphics", "minimum_height", "600")
+# Config.set("graphics", "minimum_width", "800")
+# Config.set("graphics", "minimum_height", "600")
 
 
 class PesajeGeneral(BoxLayout):

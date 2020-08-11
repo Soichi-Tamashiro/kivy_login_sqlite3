@@ -11,7 +11,7 @@ from kivy.uix.gridlayout import GridLayout
 
 from kivy.lang import Builder
 
-Builder.load_file('pesajetable/pesaje_table.kv')
+Builder.load_file('pesaje_table/pesaje_table.kv')
 
 from kivy.config import Config
 Config.set("graphics", "minimum_width", "800")
