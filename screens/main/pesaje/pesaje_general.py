@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from kivy.config import Config
-from kivy.lang import Builder
 import sqlite3
 import os
 
@@ -11,11 +10,13 @@ from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
 from pesaje_table.pesaje_table import PesajeTable
 
+from kivy.lang import Builder
 
 Builder.load_file('pesaje/pesaje_general.kv')
 
-# Config.set("graphics", "minimum_width", "800")
-# Config.set("graphics", "minimum_height", "600")
+
+Config.set("graphics", "minimum_width", "800")
+Config.set("graphics", "minimum_height", "600")
 
 
 class PesajeGeneral(BoxLayout):

@@ -20,6 +20,7 @@
                 pos: self.pos
         size_hint_y: None
         height: root.height*0.05
+        # height: mm(10)
         Label:
             text: 'Pesaje General de Vehiculo'
     TabbedPanel:
@@ -30,9 +31,11 @@
                 size: self.size
                 pos: self.pos
         do_default_tab: False
-        tab_width: root.size[0]*.27
+        tab_width: root.size[0]*.4
         TabbedPanelItem:
             text: 'Gestion Pesaje Vehiculo'
+            # font_size: mm(5)
+            bold: True
             background_color: hex('#0f7272')
             background_normal: ''
             BoxLayout:
@@ -85,6 +88,7 @@
                         text: 'botones'
         TabbedPanelItem:
             text: 'Gestion Consulta Vehiculo'
+            bold: True
             background_color: hex('#0f7272')
             background_normal: ''
             BoxLayout:
