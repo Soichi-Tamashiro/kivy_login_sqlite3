@@ -50,7 +50,7 @@ def create_table_data(cursor):
     cursor.execute(
         '''
         CREATE TABLE Data(
-        ID        INT   PRIMARY KEY  NOT NULL,
+        ID        INT   PRIMARY KEY  NOT NULL
         Empresa   TEXT               NOT NULL,
         Bascula   TEXT               NOT NULL,
         Placa     TEXT               NOT NULL

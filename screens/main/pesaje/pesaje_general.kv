@@ -1,5 +1,8 @@
 #:import hex kivy.utils.get_color_from_hex
 
+<NewDataButton@Button>:
+    # font_size: self.height*.5
+    size_hint_x: .2
 <PesajeGeneralCuadroIndex@BoxLayout>:
     canvas.before:
         Color:
@@ -42,6 +45,7 @@
             bold: True
             background_color: hex('#0f7272')
             background_normal: ''
+            # on_state: print(" Presionado toggle")
             BoxLayout:
                 canvas.before:
                     Color:
@@ -87,9 +91,16 @@
                     Label:
                         text: 'Cantidad de Registros: 0'
                 BoxLayout:
+                    orientation: 'vertical'
                     size_hint_y: .3
                     Label:
                         text: 'botones'
+                    BoxLayout:
+                        orientation:'horizontal'
+                        NewDataButton:
+                            text: 'Nuevo Pesaje'
+                            on_press: root.ingresar_pesaje()
+                        BoxLayout:
         TabbedPanelItem:
             text: 'Gestion Consulta Vehiculo'
             outline_width: .5

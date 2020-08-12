@@ -1,4 +1,4 @@
-# import kivy python only works in main folder not subfolders
+# import kivy self created modules python only works in main folder not subfolders
 from default.default import MainWid
 from signin.signin import SigninWindow
 from kivy.app import App
