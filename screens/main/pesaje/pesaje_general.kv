@@ -1,6 +1,6 @@
 #:import hex kivy.utils.get_color_from_hex
 
-<NewDataButton@Button>:
+<NewDataButton@ToggleButton>:
     # font_size: self.height*.5
     size_hint_x: .2
 <PesajeGeneralCuadroIndex@BoxLayout>:
@@ -14,6 +14,7 @@
 
 <PesajeGeneral>:
     orientation: 'vertical'
+    number: 0
     BoxLayout:
         canvas.before:
             Color:
@@ -99,7 +100,10 @@
                         orientation:'horizontal'
                         NewDataButton:
                             text: 'Nuevo Pesaje'
-                            on_press: root.ingresar_pesaje()
+                            on_press:
+                                root.number += 1
+                                root.ingresar_pesaje()
+                                # print("my current state is {}".format(self.state))
                         BoxLayout:
         TabbedPanelItem:
             text: 'Gestion Consulta Vehiculo'

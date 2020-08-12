@@ -2,7 +2,7 @@
 from kivy.config import Config
 import sqlite3
 import os
-import webbrowser 
+import webbrowser
 
 from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
