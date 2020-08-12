@@ -9,7 +9,8 @@ from kivy.properties import NumericProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
-from pesaje_table.pesaje_table import PesajeTable
+# from pesaje_table.pesaje_table import PesajeTable
+from pesaje_table.ingresar_data import IngresarData
 
 from kivy.lang import Builder
 
@@ -74,7 +75,9 @@ def create_table_data(cursor):
 
 
 class PesajeGeneral(BoxLayout):
-    pesaje_table_widget = PesajeTable()
+    # pesaje_table_widget = PesajeTable()
+    ingresar_data_widget = IngresarData()
+
     number = NumericProperty(0)
 
     def __init__(self, **kwargs):
@@ -92,19 +95,14 @@ class PesajeGeneral(BoxLayout):
         if(self.number == 1):
             self.number = 0
             print(self.number)
-            self.ids.tabla_pesaje.remove_widget(self.pesaje_table_widget)
+            # self.ids.tabla_pesaje.remove_widget(self.pesaje_table_widget)
+            self.ids.tabla_pesaje.remove_widget(self.ingresar_data_widget)
         elif(self.number == 0):
             self.number = 1
             print(self.number)
-            self.ids.tabla_pesaje.add_widget(self.pesaje_table_widget)
+            self.ids.tabla_pesaje.add_widget(self.ingresar_data_widget)
         pass
         # self.ids.tabla_pesaje.add_widget(self.pesaje_table_widget)
-
-    def cerrar_ingresar_pesaje(self):
-        # self.ids.tabla_pesaje.remove_widget(self.pesaje_table_widget)
-        # def on_enter(self):
-        #     print("Creating DB")
-        pass
 
 
 class pesaje_general(App):

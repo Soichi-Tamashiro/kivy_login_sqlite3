@@ -11,22 +11,22 @@ from kivy.uix.gridlayout import GridLayout
 
 from kivy.lang import Builder
 
-Builder.load_file('pesaje_table/pesaje_table.kv')
+Builder.load_file('pesaje_table/ingresar_data.kv')
 
 # from kivy.config import Config
 # Config.set("graphics", "minimum_width", "800")
 # Config.set("graphics", "minimum_height", "600")
 
 
-class PesajeTable(BoxLayout):
+class IngresarData(BoxLayout):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
 
 
-class pesaje_table(App):
+class ingresar_data(App):
     def build(self):
-        return PesajeTable()
+        return IngresarData()
 
 
 if __name__ == '__main__':
-    pesaje_table().run()
+    ingresar_data().run()
