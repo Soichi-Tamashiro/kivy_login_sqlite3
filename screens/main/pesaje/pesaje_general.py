@@ -13,7 +13,7 @@ from pesaje_table.pesaje_table import PesajeTable
 
 from kivy.lang import Builder
 
-# Builder.load_file('pesaje/pesaje_general.kv')
+Builder.load_file('pesaje/pesaje_general.kv')
 
 
 Config.set("graphics", "minimum_width", "800")
@@ -75,7 +75,8 @@ def create_table_data(cursor):
 
 class PesajeGeneral(BoxLayout):
     pesaje_table_widget = PesajeTable()
-    number = NumericProperty()
+    number = NumericProperty(0)
+
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
         self.APP_PATH = os.getcwd()
@@ -87,13 +88,17 @@ class PesajeGeneral(BoxLayout):
 
     def ingresar_pesaje(self):
         print("NUEVO PESAJE")
-        print(self.number)
-
-        # estado = self.NewDataButton.on_state(instance)
-        # print('My button <%s> state is <%s>' % (instance, value))
+        # print(self.number)
+        if(self.number == 1):
+            self.number = 0
+            print(self.number)
+            self.ids.tabla_pesaje.remove_widget(self.pesaje_table_widget)
+        elif(self.number == 0):
+            self.number = 1
+            print(self.number)
+            self.ids.tabla_pesaje.add_widget(self.pesaje_table_widget)
         pass
         # self.ids.tabla_pesaje.add_widget(self.pesaje_table_widget)
-
 
     def cerrar_ingresar_pesaje(self):
         # self.ids.tabla_pesaje.remove_widget(self.pesaje_table_widget)
