@@ -37,15 +37,23 @@
         size_hint_x: None
         width: root.size[0]/80
     PesajeGeneralCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.08
         Label:
             text:'Ticket'
     PesajeGeneralCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.18
         Label:
             text:'Empresa'
     PesajeGeneralCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.09
         Label:
             text:'Bascula'
     PesajeGeneralCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.09
         Label:
             text:'Placa'
     PesajeGeneralCuadroIndex:
@@ -54,16 +62,22 @@
         Label:
             text:'Pesaje'
     PesajeGeneralCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.11
         Label:
             text:'Fecha'
         Label:
             text:'Entrada'
     PesajeGeneralCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.09
         Label:
             text:'Peso'
         Label:
             text:'Entrada'
     PesajeGeneralCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.11
         Label:
             text:'Fecha'
         Label:
@@ -82,78 +96,103 @@
         size_hint_x: None
         width: root.size[0]/80
 
-<IndexPeso2@GridLayout>:
-    canvas.before:
-        Color:
-            rgba: hex('#000000')
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    rows:1
-    size_hint_y: .35
-    # height : 16
-    padding : [1,1,1,1]
-    spacing: 1
-    PesajeGeneralCuadroIndex1:
-        size_hint_x: None
-        width: root.size[0]/80
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: ticket_field
-            hint_text: '00001'
-            on_text_validate: empresa_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: empresa_field
-            hint_text: 'tam SAC'
-            on_text_validate: bascula_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: bascula_field
-            hint_text: 'B102'
-            on_text_validate: placa_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: placa_field
-            hint_text:'12345'
-            on_text_validate: ciclo_pesaje_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: ciclo_pesaje_field
-            hint_text: '1'
-            on_text_validate: fecha_entrada_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: fecha_entrada_field
-            hint_text: '09/08/20'
-            on_text_validate: peso_entrada_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: peso_entrada_field
-            hint_text: '20T'
-            on_text_validate: fecha_salida_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: fecha_salida_field
-            hint_text: '10/08/20'
-            on_text_validate: peso_salida_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: peso_salida_field
-            hint_text:'30T'
-            on_text_validate: peso_neto_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        MyTextInput:
-            id: peso_neto_field
-            hint_text:'30T'
-            # on_text_validate: fecha_salida_field.focus = True
-    PesajeGeneralCuadroIndex1:
-        size_hint_x: None
-        width: root.size[0]/80
+
 <IngresarData>:
     orientation: 'vertical'
+    # ticket_field: ticket_field
     IndexPeso:
-    IndexPeso2:
+    GridLayout:
+        canvas.before:
+            Color:
+                rgba: hex('#000000')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        rows:1
+        size_hint_y: .2
+        # height : 16
+        padding : [1,1,1,1]
+        spacing: 1
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]/80
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]*.08
+            MyTextInput:
+                id: ticket_field
+                hint_text: '00001'
+                on_text_validate: empresa_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]*.18
+            MyTextInput:
+                id: empresa_field
+                hint_text: 'tam SAC'
+                on_text_validate: bascula_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]*.09
+            MyTextInput:
+                id: bascula_field
+                hint_text: 'B102'
+                on_text_validate: placa_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]*.09
+            MyTextInput:
+                id: placa_field
+                hint_text:'12345'
+                on_text_validate: ciclo_pesaje_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            MyTextInput:
+                id: ciclo_pesaje_field
+                hint_text: '1'
+                on_text_validate: fecha_entrada_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]*.11
+            Button:
+                id: fecha_entrada_field
+                text: '09/08/20'
+                on_press:
+                    root.show_datepicker_1()
+            # MyTextInput:
+            #     id: fecha_entrada_field
+            #     hint_text: '09/08/20'
+            #     on_text_validate: peso_entrada_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]*.09
+            MyTextInput:
+                id: peso_entrada_field
+                hint_text: '20T'
+                on_text_validate: fecha_salida_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]*.11
+            Button:
+                id: fecha_salida_field
+                text: '10/08/20'
+                on_press:
+                    root.show_datepicker_2()
+            # MyTextInput:
+            #     id: fecha_salida_field
+            #     hint_text: '10/08/20'
+            #     on_text_validate: peso_salida_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            MyTextInput:
+                id: peso_salida_field
+                hint_text:'30T'
+                on_text_validate: peso_neto_field.focus = True
+        PesajeGeneralCuadroIndex1:
+            MyTextInput:
+                id: peso_neto_field
+                hint_text:'30T'
+                # on_text_validate: root.update()
+        PesajeGeneralCuadroIndex1:
+            size_hint_x: None
+            width: root.size[0]/80
     BoxLayout:
         canvas.before:
             Color:

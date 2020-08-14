@@ -4,13 +4,15 @@ import sqlite3
 import os
 
 from kivy.app import App
+from kivymd.app import MDApp
 from kivy.uix.boxlayout import BoxLayout
-from kivy.properties import NumericProperty
+from kivy.properties import NumericProperty, ObjectProperty, StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.tabbedpanel import TabbedPanel
 # from pesaje_table.pesaje_table import PesajeTable
 from pesaje_table.ingresar_data import IngresarData
+# from pesaje_table.ingresar_data import ingresar_data_dict
 
 from kivy.lang import Builder
 
@@ -77,7 +79,8 @@ def create_table_data(cursor):
 class PesajeGeneral(BoxLayout):
     # pesaje_table_widget = PesajeTable()
     ingresar_data_widget = IngresarData()
-
+    # nuevo_pesaje_button = ObjectProperty()
+    guardar_pesaje_button = ObjectProperty()
     number = NumericProperty(0)
 
     def __init__(self, **kwargs):
@@ -97,15 +100,75 @@ class PesajeGeneral(BoxLayout):
             print(self.number)
             # self.ids.tabla_pesaje.remove_widget(self.pesaje_table_widget)
             self.ids.tabla_pesaje.remove_widget(self.ingresar_data_widget)
+            self.ids.nuevo_pesaje_button.text = 'Nuevo Pesaje'
+            self.guardar_pesaje_button.disabled = True
         elif(self.number == 0):
             self.number = 1
             print(self.number)
             self.ids.tabla_pesaje.add_widget(self.ingresar_data_widget)
+            self.ids.nuevo_pesaje_button.text = 'Cerrar'
+            self.guardar_pesaje_button.disabled = False
+            for child in self.ids.tabla_pesaje.children:
+                print(child)
         pass
         # self.ids.tabla_pesaje.add_widget(self.pesaje_table_widget)
 
+    def guardar_pesaje(self):
+        # c = App.get_running_app()
+        print("GUARDAR PESAJE")
+        if(self.number == 1):
+            self.number = 0
+            print(self.number)
+            # update table
+            con = sqlite3.connect(self.DB_PATH)
+            print(self.DB_PATH)
+            cursor = con.cursor()
+            Ticket = self.ingresar_data_widget.update_ticket()
+            ID = Ticket
+            Empresa = self.ingresar_data_widget.update_empresa()
+            Bascula = self.ingresar_data_widget.update_bascula()
+            Placa = self.ingresar_data_widget.update_placa()
+            CicloPesaje = self.ingresar_data_widget.update_ciclo_pesaje()
+            FechaEntrada = self.ingresar_data_widget.update_fecha_entrada()
+            PesoEntrada = self.ingresar_data_widget.update_peso_entrada()
+            FechaSalida = self.ingresar_data_widget.update_fecha_salida()
+            PesoSalida = self.ingresar_data_widget.update_peso_salida()
+            PesoNeto = self.ingresar_data_widget.update_peso_neto()
+            datos = (ID, Ticket, Empresa, Bascula, Placa, CicloPesaje,
+                     FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto)
+            s1 = 'INSERT INTO Data(ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto)'
+            # update buttons
+            s2 = 'VALUES(%s,"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")' % datos
+            try:
+                cursor.execute(s1 + ' ' + s2)
+                con.commit()
+                con.close()
+            except Exception as e:
+                print(e)
 
-class pesaje_general(App):
+            self.nuevo_pesaje_button.text = 'Nuevo Pesaje'
+            self.guardar_pesaje_button.disabled = True
+            #
+            # con = sqlite3.connect(self.DB_PATH)
+            # cursor = con.cursor()
+            # d1 = self.ingresar_data_widget.ingresar_data.ticket_field.text
+            # d1 = self.ids.tabla_pesaje.ingresar_data.ticket_field.text
+
+        # elif(self.number == 0):
+        #     self.number = 1
+        #     print(self.number)
+        #     self.ids.tabla_pesaje.add_widget(self.ingresar_data_widget)
+        #     self.nuevo_pesaje_button.text = 'Cerrar'
+        #     self.guardar_pesaje_button.disabled = False
+            self.ids.tabla_pesaje.remove_widget(
+                self.ingresar_data_widget)
+            print("PESAJE GUARDADO CON EXITO")
+        pass
+
+
+class pesaje_general(MDApp):
+    # ingresar_data_dict_2 = {}
+
     def build(self):
         return PesajeGeneral()
 

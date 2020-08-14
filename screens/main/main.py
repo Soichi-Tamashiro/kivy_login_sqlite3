@@ -1,4 +1,6 @@
 # import kivy self created modules python only works in main folder not subfolders
+import sqlite3
+import os
 from default.default import MainWid
 from signin.signin import SigninWindow
 from kivy.app import App
@@ -24,7 +26,7 @@ class MainWindow(BoxLayout):
         self.ids.scrn_def.add_widget(self.default_widget)
 
 
-class MainApp(App):
+class MainApp(MDApp):
     def build(self):
         return MainWindow()
 
