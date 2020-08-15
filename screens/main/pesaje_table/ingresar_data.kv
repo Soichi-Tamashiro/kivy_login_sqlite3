@@ -35,7 +35,7 @@
     spacing: 1
     PesajeGeneralCuadroIndex:
         size_hint_x: None
-        width: root.size[0]/80
+        width: root.size[0]/100
     PesajeGeneralCuadroIndex:
         size_hint_x: None
         width: root.size[0]*.08
@@ -63,7 +63,7 @@
             text:'Pesaje'
     PesajeGeneralCuadroIndex:
         size_hint_x: None
-        width: root.size[0]*.11
+        width: root.size[0]*.13
         Label:
             text:'Fecha'
         Label:
@@ -77,7 +77,7 @@
             text:'Entrada'
     PesajeGeneralCuadroIndex:
         size_hint_x: None
-        width: root.size[0]*.11
+        width: root.size[0]*.13
         Label:
             text:'Fecha'
         Label:
@@ -94,7 +94,7 @@
             text:'Neto'
     PesajeGeneralCuadroIndex:
         size_hint_x: None
-        width: root.size[0]/80
+        width: root.size[0]/100
 
 
 <IngresarData>:
@@ -115,7 +115,7 @@
         spacing: 1
         PesajeGeneralCuadroIndex1:
             size_hint_x: None
-            width: root.size[0]/80
+            width: root.size[0]/100
         PesajeGeneralCuadroIndex1:
             size_hint_x: None
             width: root.size[0]*.08
@@ -151,10 +151,10 @@
                 on_text_validate: fecha_entrada_field.focus = True
         PesajeGeneralCuadroIndex1:
             size_hint_x: None
-            width: root.size[0]*.11
+            width: root.size[0]*.13
             Button:
                 id: fecha_entrada_field
-                text: '09/08/20'
+                text: "dd/mm/yyyy"
                 on_press:
                     root.show_datepicker_1()
             # MyTextInput:
@@ -170,10 +170,10 @@
                 on_text_validate: fecha_salida_field.focus = True
         PesajeGeneralCuadroIndex1:
             size_hint_x: None
-            width: root.size[0]*.11
+            width: root.size[0]*.13
             Button:
                 id: fecha_salida_field
-                text: '10/08/20'
+                text: "dd/mm/yyyy"
                 on_press:
                     root.show_datepicker_2()
             # MyTextInput:
@@ -192,7 +192,7 @@
                 # on_text_validate: root.update()
         PesajeGeneralCuadroIndex1:
             size_hint_x: None
-            width: root.size[0]/80
+            width: root.size[0]/100
     BoxLayout:
         canvas.before:
             Color:

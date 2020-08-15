@@ -12,9 +12,9 @@ from kivy.uix.boxlayout import BoxLayout
 # from kivy.properties import NumericProperty, ObjectProperty, StringProperty
 # from kivymd.uix.picker import MDDatePicker
 
-# from kivy.lang import Builder
+from kivy.lang import Builder
 
-# Builder.load_file('mostrar_data/mostrar_data.kv')
+Builder.load_file('pesaje_table/mostrar_data.kv')
 
 
 class MostrarData(BoxLayout):
@@ -28,4 +28,4 @@ class mostrar_data(MDApp):
 
 
 if __name__ == '__main__':
-    mostrar_data().run
+    mostrar_data().run()

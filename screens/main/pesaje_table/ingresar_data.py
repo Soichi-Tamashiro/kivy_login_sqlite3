@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from kivy.config import Config
 import sqlite3
 import os
 
@@ -14,11 +15,10 @@ from kivymd.uix.picker import MDDatePicker
 
 from kivy.lang import Builder
 
-# Builder.load_file('pesaje_table/ingresar_data.kv')
+Builder.load_file('pesaje_table/ingresar_data.kv')
 
-# from kivy.config import Config
-# Config.set("graphics", "minimum_width", "800")
-# Config.set("graphics", "minimum_height", "600")
+Config.set("graphics", "minimum_width", "800")
+Config.set("graphics", "minimum_height", "600")
 
 
 class IngresarData(BoxLayout):
@@ -81,6 +81,15 @@ class IngresarData(BoxLayout):
 
     def clear_data(self):
         self.ids.ticket_field.text = ""
+        self.ids.empresa_field.text = ""
+        self.ids.bascula_field.text = ""
+        self.ids.placa_field.text = ""
+        self.ids.ciclo_pesaje_field.text = ""
+        self.ids.fecha_entrada_field.text = "dd/mm/yyyy"
+        self.ids.peso_entrada_field.text = ""
+        self.ids.fecha_salida_field.text = "dd/mm/yyyy"
+        self.ids.peso_salida_field.text = ""
+        self.ids.peso_neto_field.text = ""
 
 
 class ingresar_data(MDApp):
