@@ -9,8 +9,8 @@ from kivy.uix.boxlayout import BoxLayout
 
 from kivy.config import Config
 
-Config.set("graphics", "width", "1920")
-Config.set("graphics", "height", "1080")
+# Config.set("graphics", "width", "1920")
+# Config.set("graphics", "height", "1080")
 Config.set("graphics", "minimum_width", "800")
 Config.set("graphics", "minimum_height", "600")
 

@@ -79,7 +79,7 @@ class IngresarData(BoxLayout):
     def update_peso_neto(self, *args):
         return self.ids.peso_neto_field.text
 
-    def clear_data(self):
+    def clear_data(self, dataton):
         self.ids.ticket_field.text = ""
         self.ids.empresa_field.text = ""
         self.ids.bascula_field.text = ""
@@ -90,6 +90,7 @@ class IngresarData(BoxLayout):
         self.ids.fecha_salida_field.text = "dd/mm/yyyy"
         self.ids.peso_salida_field.text = ""
         self.ids.peso_neto_field.text = ""
+        print(dataton)
 
 
 class ingresar_data(MDApp):

@@ -159,7 +159,8 @@ class PesajeGeneral(BoxLayout):
                 self.ids.tabla_pesaje.remove_widget(
                     self.ingresar_data_widget)
                 # clear_data
-                self.ingresar_data_widget.clear_data()
+                dataton = "limpiado"
+                self.ingresar_data_widget.clear_data(dataton)
                 print("PESAJE GUARDADO CON EXITO")
             else:
                 self.number = 1
@@ -193,6 +194,37 @@ class PesajeGeneral(BoxLayout):
             self.ids.mostrar_data_button.text = 'Cerrar'
             self.ids.guardar_pesaje_button.disabled = True
             self.ids.nuevo_pesaje_button.disabled = True
+            con = sqlite3.connect(self.DB_PATH)
+            cursor = con.cursor()
+            cursor.execute(
+                'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
+            data_file = cursor.fetchall()
+            self.mostrar_data_widget.crear_fila1(data_file)
+            # print(len(data_file))
+            # for i in range(len(data_file)):
+            # data_file[fila][columna]
+            # print(data_file[3][2])
+            # for i in cursor:
+            #     r1 = str(100000 + i[0])[1:6]  # + '\n'
+            #     # r2 = str(10000 + i[1])[1:5]
+            #     r3 = str(i[2])
+            #     r5 = str(i[4])
+            #     r4 = str(i[3])
+            #     r6 = str(i[5])
+            #     r9 = str(i[8])
+            #     r7 = str(i[6])
+            #     r8 = str(i[7])
+            #     r10 = str(i[9])
+            #     r11 = str(i[10])
+            #     # print(r1)
+            #     self.mostrar_data_widget.crear_fila(
+            #         r1, r3, r4, r5, r6, r7, r8, r9, r10, r11)
+            #     # self.mostrar_data_widget.crear_fila(r1)
+            #     # self.mostrar_data_widget.crear_fila(r3)
+            #     for row in range(0, 10):
+            #         # print(i[row])
+
+            con.close()
         pass
 
 

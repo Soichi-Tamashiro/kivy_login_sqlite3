@@ -1,4 +1,111 @@
 #:import hex kivy.utils.get_color_from_hex
+
+<MostratDataCuadroIndex@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: hex('#398f8f')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    orientation: 'vertical'
+
+<MostratDataCuadroIndex1@BoxLayout>:
+    canvas.before:
+        Color:
+            rgba: hex('#45d1d1')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    orientation: 'vertical'
+
+<IndexData@GridLayout>:
+    canvas.before:
+        Color:
+            rgba: hex('#000000')
+        Rectangle:
+            size: self.size
+            pos: self.pos
+    rows:1
+    size_hint_y: 0.2
+    # height : root.height*.5
+    padding : [1,1,1,1]
+    spacing: 1
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]/100
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.08
+        Label:
+            text:'Ticket'
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.18
+        Label:
+            text:'Empresa'
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.09
+        Label:
+            text:'Bascula'
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.09
+        Label:
+            text:'Placa'
+    MostratDataCuadroIndex:
+        Label:
+            text:'Ciclo'
+        Label:
+            text:'Pesaje'
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.13
+        Label:
+            text:'Fecha'
+        Label:
+            text:'Entrada'
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.09
+        Label:
+            text:'Peso'
+        Label:
+            text:'Entrada'
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]*.13
+        Label:
+            text:'Fecha'
+        Label:
+            text:'Salida'
+    MostratDataCuadroIndex:
+        Label:
+            text:'Peso'
+        Label:
+            text:'Salida'
+    MostratDataCuadroIndex:
+        Label:
+            text:'Peso'
+        Label:
+            text:'Neto'
+    MostratDataCuadroIndex:
+        size_hint_x: None
+        width: root.size[0]/100
+
 <MostrarData>:
-    Label:
-        text: 'MostrarData'
+    orientation: 'vertical'
+    IndexData:
+    ScrollView:
+        size: self.size
+        bar_width: root.size[0]/200
+        bar_color: hex('#f0960e')
+        bar_inactive_color: hex('#ad7f37')
+        GridLayout:
+            id: container2
+            # padding : [10,10,10,10]
+            # spacing: 5
+            size_hint_y: None
+            cols:1
+            row_default_height: root.height*0.1
+            height: self.minimum_height
