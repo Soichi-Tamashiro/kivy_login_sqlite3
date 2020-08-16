@@ -8,6 +8,7 @@
     nuevo_pesaje_button: nuevo_pesaje_button
     guardar_pesaje_button: guardar_pesaje_button
     mostrar_data_button: mostrar_data_button
+    cantidad_registros: cantidad_registros
     orientation: 'vertical'
     number: 0
     BoxLayout:
@@ -86,6 +87,7 @@
                             pos: self.pos
                     size_hint_y: .2
                     Label:
+                        id: cantidad_registros
                         text: 'Cantidad de Registros: 0'
                 BoxLayout:
                     orientation: 'vertical'

@@ -29,15 +29,15 @@ class MostrarData(BoxLayout):
 
     def crear_fila1(self, array_data):
         self.ids.container2.clear_widgets()
-        print(len(array_data[0]))
-        print(len(array_data))
+        # print("Cantidad de columnas : " + str(len(array_data[0])))
+        # print("Cantidad de filas : " + str(len(array_data)))
         for i in range(len(array_data)):
             HB = BoxLayout(orientation='horizontal')
             self.ids.container2.add_widget(HB)
-            for j in range(len(array_data[i])):
+            for j in range(1, len(array_data[i])):
                 l1 = Label(text=str(array_data[i][j]))
                 HB.add_widget(l1)
-                print(array_data[i][j])
+                # print(array_data[i][j])
 
     def crear_fila(self, r1, r3, r4, r5, r6, r7, r8, r9, r10, r11):
         #     print(r1)
@@ -65,22 +65,6 @@ class MostrarData(BoxLayout):
         HB.add_widget(l9)
         HB.add_widget(l10)
         HB.add_widget(l11)
-    #     self.ids.container2.add_widget(l1)
-    #     ## self.ids.container2.add_widget(l2)
-    #     self.ids.container2.add_widget(l3)
-    #     self.ids.container2.add_widget(l4)
-    #     self.ids.container2.add_widget(l5)
-    #     self.ids.container2.add_widget(l6)
-    #     self.ids.container2.add_widget(l7)
-    #     self.ids.container2.add_widget(l8)
-    #     self.ids.container2.add_widget(l9)
-    #     self.ids.container2.add_widget(l10)
-    #     self.ids.container2.add_widget(l11)
-    # def crear_fila(self, r1):
-        # HB = BoxLayout(orientation='horizontal')
-        # l1 = Label(text=r1)
-        # self.ids.container2.add_widget(HB)
-        # HB.add_widget(l1)
         pass
 
 

@@ -6,6 +6,7 @@ import os
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.label import Label
 from kivy.properties import NumericProperty, ObjectProperty, StringProperty
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
@@ -187,6 +188,7 @@ class PesajeGeneral(BoxLayout):
             self.ids.mostrar_data_button.text = 'Consulta'
             self.ids.guardar_pesaje_button.disabled = False
             self.ids.nuevo_pesaje_button.disabled = False
+            self.ids.cantidad_registros.text = ""
         elif(self.mostrar_data_state == 0):
             self.mostrar_data_state = 1
             print(self.mostrar_data_state)
@@ -199,7 +201,11 @@ class PesajeGeneral(BoxLayout):
             cursor.execute(
                 'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
             data_file = cursor.fetchall()
+            numero_de_registros = str(len(data_file))
+            print("Cantidad de registros : "+numero_de_registros)
             self.mostrar_data_widget.crear_fila1(data_file)
+            self.ids.cantidad_registros.text = "Cantidad de Registros: " + numero_de_registros
+            # print(self.ids.cantidad_registros.text)
             # print(len(data_file))
             # for i in range(len(data_file)):
             # data_file[fila][columna]
