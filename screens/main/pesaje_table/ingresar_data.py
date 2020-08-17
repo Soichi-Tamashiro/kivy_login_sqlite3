@@ -101,6 +101,9 @@ class IngresarData(BoxLayout):
         self.ids.fecha_salida_field.text = "dd/mm/yyyy"
         self.ids.peso_salida_field.text = ""
         self.ids.peso_neto_field.text = ""
+        self.empresa_field_widget.update_empresa_db()
+        # self.ids.empresa_field.clear_widgets()
+        # self.ids.empresa_field.add_widget(self.empresa_field_widget)
         print(dataton)
 
     # def search_empresa(self):
