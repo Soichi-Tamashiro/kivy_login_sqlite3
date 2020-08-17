@@ -100,6 +100,7 @@
 <IngresarData>:
     orientation: 'vertical'
     # ticket_field: ticket_field
+    empresa_field:empresa_field
     IndexPeso:
     GridLayout:
         canvas.before:
@@ -122,14 +123,19 @@
             MyTextInput:
                 id: ticket_field
                 hint_text: '00001'
-                on_text_validate: empresa_field.focus = True
+                on_text_validate:
+                    empresa_field.focus = True
         PesajeGeneralCuadroIndex1:
+            id: empresa_field
             size_hint_x: None
             width: root.size[0]*.18
-            MyTextInput:
-                id: empresa_field
-                hint_text: 'tam SAC'
-                on_text_validate: bascula_field.focus = True
+            # MyTextInput:
+            #     id: empresa_field
+            #     hint_text: 'tam SAC'
+            #     on_text:
+            #         root.search_empresa()
+            #         # print(empresa_field.text)
+            #     on_text_validate: bascula_field.focus = True
         PesajeGeneralCuadroIndex1:
             size_hint_x: None
             width: root.size[0]*.09

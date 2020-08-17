@@ -2,7 +2,8 @@
 from kivy.config import Config
 import sqlite3
 import os
-
+import sys
+from kivy.clock import Clock
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.uix.boxlayout import BoxLayout
@@ -113,8 +114,7 @@ class PesajeGeneral(BoxLayout):
             self.ids.nuevo_pesaje_button.text = 'Cerrar'
             self.ids.guardar_pesaje_button.disabled = False
             self.ids.mostrar_data_button.disabled = True
-            # for child in self.ids.tabla_pesaje.children:
-            #     print(child)
+            #
         pass
         # self.ids.tabla_pesaje.add_widget(self.pesaje_table_widget)
 
@@ -151,18 +151,19 @@ class PesajeGeneral(BoxLayout):
                     cursor.execute(s1 + ' ' + s2)
                     con.commit()
                     con.close()
+                    # update buttons
+                    self.nuevo_pesaje_button.text = 'Nuevo Pesaje'
+                    self.guardar_pesaje_button.disabled = True
+                    # remove_widget
+                    self.ids.tabla_pesaje.remove_widget(
+                        self.ingresar_data_widget)
+                    # clear_data
+                    dataton = "limpiado"
+                    self.ingresar_data_widget.clear_data(dataton)
+                    print("PESAJE GUARDADO CON EXITO")
                 except Exception as e:
                     print(e)
-                # update buttons
-                self.nuevo_pesaje_button.text = 'Nuevo Pesaje'
-                self.guardar_pesaje_button.disabled = True
-                # remove_widget
-                self.ids.tabla_pesaje.remove_widget(
-                    self.ingresar_data_widget)
-                # clear_data
-                dataton = "limpiado"
-                self.ingresar_data_widget.clear_data(dataton)
-                print("PESAJE GUARDADO CON EXITO")
+
             else:
                 self.number = 1
                 print(self.number)
@@ -186,7 +187,7 @@ class PesajeGeneral(BoxLayout):
             print(self.mostrar_data_state)
             self.ids.tabla_pesaje.remove_widget(self.mostrar_data_widget)
             self.ids.mostrar_data_button.text = 'Consulta'
-            self.ids.guardar_pesaje_button.disabled = False
+            self.ids.guardar_pesaje_button.disabled = True
             self.ids.nuevo_pesaje_button.disabled = False
             self.ids.cantidad_registros.text = ""
         elif(self.mostrar_data_state == 0):
@@ -202,7 +203,7 @@ class PesajeGeneral(BoxLayout):
                 'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
             data_file = cursor.fetchall()
             numero_de_registros = str(len(data_file))
-            print("Cantidad de registros : "+numero_de_registros)
+            print("Cantidad de registros : " + numero_de_registros)
             self.mostrar_data_widget.crear_fila1(data_file)
             self.ids.cantidad_registros.text = "Cantidad de Registros: " + numero_de_registros
             # print(self.ids.cantidad_registros.text)
