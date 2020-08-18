@@ -38,7 +38,21 @@ class MyTextInput1(TextInput):
         data_file = cursor.fetchall()
         empresa_array = [""] * len(data_file[2])
         for i in range(len(data_file)):
-            empresa_array[i] = data_file[i][2]
+            # empresa_array[i] = str(data_file[i][2])
+            empresa_array.insert(i, str(data_file[i][2]))
+            print(empresa_array[i])
+        self.word_list = empresa_array
+
+    def update_empresa_db(self, **kwargs):
+        con = sqlite3.connect(self.DB_PATH)
+        cursor = con.cursor()
+        cursor.execute(
+            'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
+        data_file = cursor.fetchall()
+        empresa_array = [""] * len(data_file[2])
+        for i in range(len(data_file)):
+            # empresa_array[i] = str(data_file[i][2])
+            empresa_array.insert(i, str(data_file[i][2]))
             print(empresa_array[i])
         self.word_list = empresa_array
 

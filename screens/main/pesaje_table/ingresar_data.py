@@ -37,6 +37,8 @@ class IngresarData(BoxLayout):
         self.DB_PATH = self.APP_PATH + "/data/my_database.db"
         print("Dirección: ", self.DB_PATH)
         self.ids.empresa_field.add_widget(self.empresa_field_widget)
+        # self.empresa_field_widget.get_focus_next()
+        #get_focus_next() self.empresa_field_widget.bind(on_text_validate=self.empresa_field.focus=True)
 
     def update_ticket(self, *args):
         return self.ids.ticket_field.text

@@ -13,6 +13,7 @@ from kivy.app import App
 from kivy.uix.textinput import TextInput
 from kivy.lang import Builder
 
+# Builder.load_file('pesaje_table/search_empresa.kv')
 # Builder.load_string('''
 # <MyTextInput1>:
 #     readonly:False
@@ -25,6 +26,8 @@ class MyTextInput1(TextInput):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
+        self.multiline = False
+        self.write_tab = False
         self.text = ""
         self.bind(text=self.on_text)
         # self.word_list = ('the the quick brown fox jumps over the lazy old dog').split(' ')
@@ -56,6 +59,9 @@ class MyTextInput1(TextInput):
             print(empresa_array[i])
         self.word_list = empresa_array
 
+    def on_text_validate(self):
+        print('User pressed enter')
+
     def on_text(self, instance, value):
         # include all current text from textinput into the word list
         # the kind of behavior sublime text has
@@ -83,7 +89,7 @@ class MyTextInput1(TextInput):
     def keyboard_on_key_down(self, window, keycode, text, modifiers):
         '''
         '''
-        if self.suggestion_text and keycode[1] == 'tab':  # complete suggestion_text
+        if self.suggestion_text and keycode[1] == 'enter':  # complete suggestion_text
             self.insert_text(self.suggestion_text + ' ')
             self.suggestion_text = ''
             return True
@@ -131,12 +137,13 @@ class search_empresa(MDApp):
 
     def build(self):
         # return MyTextInput1()
-        return Builder.load_string('''
-MyTextInput1
-    readonly:False
-    multiline:False
-    focus: True
-''')
+        return Builder.load_file('pesaje_table/search_empresa.kv')
+#         return Builder.load_string('''
+# MyTextInput1
+#     readonly:False
+#     multiline:False
+#     focus: True
+# ''')
 
 
 if __name__ == "__main__":
