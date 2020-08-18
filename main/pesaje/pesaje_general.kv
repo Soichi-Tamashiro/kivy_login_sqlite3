@@ -1,0 +1,135 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<NewDataButton@ToggleButton>:
+    # font_size: self.height*.5
+    size_hint_x: .3
+
+<PesajeGeneral>:
+    nuevo_pesaje_button: nuevo_pesaje_button
+    guardar_pesaje_button: guardar_pesaje_button
+    mostrar_data_button: mostrar_data_button
+    cantidad_registros: cantidad_registros
+    orientation: 'vertical'
+    number: 0
+    BoxLayout:
+        canvas.before:
+            Color:
+                rgba: hex('#05445e')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        size_hint_y: None
+        height: root.height*0.05
+        # height: mm(10)
+        Label:
+            text: 'Pesaje General de Vehiculo'
+    TabbedPanel:
+        canvas.before:
+            Color:
+                rgba: hex('#5aaead')
+            Rectangle:
+                size: self.size
+                pos: self.pos
+        do_default_tab: False
+        tab_width: root.size[0]*.4
+        TabbedPanelItem:
+            id: gestion_pesaje_vehiculo
+            text: 'Gestion Pesaje Vehiculo'
+            # text_size: root.width, None
+            # size: self.texture_size
+            # font_size: mm(5)
+            outline_width: .5
+            # outline_color: hex('#ffffff')
+            bold: True
+            background_color: hex('#0f7272')
+            background_normal: ''
+            # on_state: print(" Presionado toggle")
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: hex('#5aaead')
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos
+                orientation: 'vertical'
+                BoxLayout:
+                    canvas.before:
+                        Color:
+                            rgba: hex('#99edec')
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    size_hint_y: .3
+                    # height: root.size[0]/8
+                    Label:
+                        text:'Filtros'
+                BoxLayout:
+                    canvas.before:
+                        Color:
+                            rgba: hex('#398f8f')
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    size_hint_y: .3
+                    # height: root.size[0]/8
+                    Label:
+                        text:'Search'
+                BoxLayout:
+                    id: tabla_pesaje
+
+
+                BoxLayout:
+                    canvas.before:
+                        Color:
+                            rgba: hex('#398f8f')
+                        Rectangle:
+                            size: self.size
+                            pos: self.pos
+                    size_hint_y: .2
+                    Label:
+                        id: cantidad_registros
+                        text: 'Cantidad de Registros: 0'
+                BoxLayout:
+                    orientation: 'vertical'
+                    size_hint_y: .3
+                    Label:
+                        text: 'botones'
+                    BoxLayout:
+                        orientation:'horizontal'
+                        NewDataButton:
+                            id: nuevo_pesaje_button
+                            text: 'Nuevo Pesaje'
+                            on_press:
+                                # root.number += 1
+                                root.ingresar_pesaje()
+                                # print("my current state is {}".format(self.state))
+                        Button:
+                            id: guardar_pesaje_button
+                            size_hint_x: .3
+                            text: 'Guardar Pesaje'
+                            on_press:
+                                root.guardar_pesaje()
+                            disabled: True
+                        Button:
+                            id: mostrar_data_button
+                            size_hint_x: .3
+                            text: 'Consulta'
+                            on_press:
+                                root.muestra_data()
+                            # disabled: True
+                        BoxLayout:
+        TabbedPanelItem:
+            text: 'Gestion Consulta Vehiculo'
+            outline_width: .5
+            bold: True
+            # text_size: root.width, None
+            # size: self.texture_size
+            background_color: hex('#0f7272')
+            background_normal: ''
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: hex('#41d790')
+                    Rectangle:
+                        size: self.size
+                        pos: self.pos

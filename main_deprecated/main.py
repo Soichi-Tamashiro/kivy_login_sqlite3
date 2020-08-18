@@ -1,8 +1,3 @@
-# import kivy self created modules python only works in main folder not subfolders
-import sqlite3
-import os
-import sys
-from kivy.clock import Clock
 from default.default import MainWid
 from signin.signin import SigninWindow
 from kivy.app import App
@@ -11,8 +6,6 @@ from kivy.uix.boxlayout import BoxLayout
 
 from kivy.config import Config
 
-# Config.set("graphics", "width", "1920")
-# Config.set("graphics", "height", "1080")
 Config.set("graphics", "minimum_width", "800")
 Config.set("graphics", "minimum_height", "600")
 
@@ -28,7 +21,7 @@ class MainWindow(BoxLayout):
         self.ids.scrn_def.add_widget(self.default_widget)
 
 
-class MainApp(MDApp):
+class MainApp(App):
     def build(self):
         return MainWindow()
 

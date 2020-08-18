@@ -18,15 +18,7 @@
     group: 'top_navs'
     on_state:
         print("save all values in the view to a dictionary")
-<PesajeGeneralCuadroIndex@BoxLayout>:
-    canvas.before:
-        Color:
-            rgba: hex('#398f8f')
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    orientation: 'vertical'
-    # font_size: root.size[0]/5
+
 <LineDiv@BoxLayout>:
     canvas.before:
         Color:
@@ -36,130 +28,7 @@
             pos: self.pos
     size_hint_y: None
     height: 1
-# ------------------------------------------------------------------------------
-<PesajeGeneral@BoxLayout>:
-    orientation: 'vertical'
-    BoxLayout:
-        canvas.before:
-            Color:
-                rgba: hex('#05445e')
-            Rectangle:
-                size: self.size
-                pos: self.pos
-        size_hint_y: None
-        height: root.height*0.05
-        Label:
-            text: 'Pesaje General de Vehiculo'
 
-<IndexPeso@GridLayout>:
-    canvas.before:
-        Color:
-            rgba: hex('#000000')
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    rows:1
-    size_hint_y: .35
-    # height : 16
-    padding : [1,1,1,1]
-    spacing: 1
-    PesajeGeneralCuadroIndex:
-        size_hint_x: None
-        width: root.size[0]/80
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Ticket'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Empresa'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Bascula'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Placa'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Ciclo'
-        Label:
-            text:'Pesaje'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Fecha'
-        Label:
-            text:'Entrada'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Peso'
-        Label:
-            text:'Entrada'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Fecha'
-        Label:
-            text:'Salida'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Peso'
-        Label:
-            text:'Salida'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'Peso'
-        Label:
-            text:'Neto'
-    PesajeGeneralCuadroIndex:
-        size_hint_x: None
-        width: root.size[0]/80
-
-<IndexPeso2@GridLayout>:
-    canvas.before:
-        Color:
-            rgba: hex('#000000')
-        Rectangle:
-            size: self.size
-            pos: self.pos
-    rows:1
-    size_hint_y: .35
-    # height : 16
-    padding : [1,1,1,1]
-    spacing: 1
-    PesajeGeneralCuadroIndex:
-        size_hint_x: None
-        width: root.size[0]/80
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'00001'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'tam SAC'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'B102'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'12345'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'1'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'09/08/20'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'20T'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'10/08/20'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'30T'
-    PesajeGeneralCuadroIndex:
-        Label:
-            text:'30T'
-    PesajeGeneralCuadroIndex:
-        size_hint_x: None
-        width: root.size[0]/80
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
 # ------------------------------------------------------------------------------
@@ -212,6 +81,8 @@
 
             ScrollView:
                 size: self.size
+                bar_color: hex('#f0960e')
+                bar_inactive_color: hex('#ad7f37')
                 GridLayout:
                     id: container
                     # padding : [10,10,10,10]
@@ -224,6 +95,7 @@
                         text: "PESAJE"
                     SideMenuButton:
                         text: "- Pesaje General"
+                        state: 'down'
                         on_state:
                             root.change_screen(self)
                             print(" Menu Button Pressed")
@@ -318,99 +190,9 @@
                             Color:
                                 rgba: hex('#ffffff')
                             Rectangle:
-                                size: root.size
+                                size: self.size
                                 pos: self.pos
-                        PesajeGeneral:
-                            TabbedPanel:
-                                canvas.before:
-                                    Color:
-                                        rgba: hex('#5aaead')
-                                    Rectangle:
-                                        size: self.size
-                                        pos: self.pos
-                                do_default_tab: False
-                                tab_width: root.size[0]/4
-                                TabbedPanelItem:
-                                    text: 'Gestion Pesaje Vehiculo'
-                                    background_color: hex('#0f7272')
-                                    background_normal: ''
-                                    BoxLayout:
-                                        canvas.before:
-                                            Color:
-                                                rgba: hex('#5aaead')
-                                            Rectangle:
-                                                size: self.size
-                                                pos: self.pos
-                                        orientation: 'vertical'
-                                        BoxLayout:
-                                            canvas.before:
-                                                Color:
-                                                    rgba: hex('#99edec')
-                                                Rectangle:
-                                                    size: self.size
-                                                    pos: self.pos
-                                            size_hint_y: .3
-                                            # height: root.size[0]/8
-                                            Label:
-                                                text:'Filtros'
-                                        BoxLayout:
-                                            canvas.before:
-                                                Color:
-                                                    rgba: hex('#398f8f')
-                                                Rectangle:
-                                                    size: self.size
-                                                    pos: self.pos
-                                            size_hint_y: .3
-                                            # height: root.size[0]/8
-                                            Label:
-                                                text:'Search'
-                                        BoxLayout:
-                                            orientation: 'vertical'
-                                            IndexPeso:
-                                            ScrollView:
-                                                size: self.size
-                                                GridLayout:
-                                                    id: container2
-                                                    # padding : [10,10,10,10]
-                                                    # spacing: 5
-                                                    size_hint_y: None
-                                                    cols:1
-                                                    row_default_height: root.height*0.05
-                                                    height: self.minimum_height
-                                                    IndexPeso2:
-                                                    IndexPeso2:
-                                                    IndexPeso2:
-                                                    IndexPeso2:
-                                                    IndexPeso2:
-                                                    IndexPeso2:
-                                                    IndexPeso2:
-                                                    IndexPeso2:
 
-                                        BoxLayout:
-                                            canvas.before:
-                                                Color:
-                                                    rgba: hex('#398f8f')
-                                                Rectangle:
-                                                    size: self.size
-                                                    pos: self.pos
-                                            size_hint_y: .2
-                                            Label:
-                                                text: 'Cantidad de Registros: 0'
-                                        BoxLayout:
-                                            size_hint_y: .3
-                                            Label:
-                                                text: 'botones'
-                                TabbedPanelItem:
-                                    text: 'Gestion Consulta Vehiculo'
-                                    background_color: hex('#0f7272')
-                                    background_normal: ''
-                                    BoxLayout:
-                                        canvas.before:
-                                            Color:
-                                                rgba: hex('#41d790')
-                                            Rectangle:
-                                                size: self.size
-                                                pos: self.pos
 
 
 
@@ -473,6 +255,9 @@
             size_hint_x: .9
 
         FlatButton:
-            text: "Acerda de ..."
+            text: "Acerca de ..."
+            underline: True
             # bold: True
             size_hint_x: .1
+            on_press:
+                root.acerca_de(self)
