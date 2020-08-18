@@ -19,6 +19,9 @@ from kivy.lang import Builder
 #     multiline:False
 #     focus: True
 # ''')
+from kivy.config import Config
+Config.set("graphics", "minimum_width", "800")
+Config.set("graphics", "minimum_height", "600")
 
 
 class MyTextInput1(TextInput):
