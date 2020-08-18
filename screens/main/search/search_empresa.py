@@ -137,7 +137,7 @@ class search_empresa(MDApp):
 
     def build(self):
         # return MyTextInput1()
-        return Builder.load_file('pesaje_table/search_empresa.kv')
+        return Builder.load_file('search/search_empresa.kv')
 #         return Builder.load_string('''
 # MyTextInput1
 #     readonly:False

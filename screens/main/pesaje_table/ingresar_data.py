@@ -16,7 +16,7 @@ from kivymd.uix.picker import MDDatePicker
 from kivy.uix.dropdown import DropDown
 from kivymd.uix.menu import MDDropdownMenu
 
-from pesaje_table.search_empresa import MyTextInput1
+from search.search_empresa import MyTextInput1
 
 from kivy.lang import Builder
 
