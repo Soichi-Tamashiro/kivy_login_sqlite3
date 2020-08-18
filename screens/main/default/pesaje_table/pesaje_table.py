@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from kivy.config import Config
 import sqlite3
 import os
 
@@ -13,7 +14,6 @@ from kivy.lang import Builder
 
 Builder.load_file('pesaje_table/pesaje_table.kv')
 
-from kivy.config import Config
 Config.set("graphics", "minimum_width", "800")
 Config.set("graphics", "minimum_height", "600")
 
