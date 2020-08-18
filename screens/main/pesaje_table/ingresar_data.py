@@ -16,7 +16,7 @@ from kivymd.uix.picker import MDDatePicker
 from kivy.uix.dropdown import DropDown
 from kivymd.uix.menu import MDDropdownMenu
 
-from search.search_empresa import MyTextInput1
+from search.search_empresa import SearchEmpresa
 
 from kivy.lang import Builder
 
@@ -27,7 +27,7 @@ Config.set("graphics", "minimum_height", "600")
 
 
 class IngresarData(BoxLayout):
-    empresa_field_widget = MyTextInput1()
+    empresa_field_widget = SearchEmpresa()
     # ticket_field = ObjectProperty()
     empresa_field = ObjectProperty()
 

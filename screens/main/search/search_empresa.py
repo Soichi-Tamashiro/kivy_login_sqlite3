@@ -15,14 +15,14 @@ from kivy.lang import Builder
 
 # Builder.load_file('pesaje_table/search_empresa.kv')
 # Builder.load_string('''
-# <MyTextInput1>:
+# <SearchEmpresa>:
 #     readonly:False
 #     multiline:False
 #     focus: True
 # ''')
 
 
-class MyTextInput1(TextInput):
+class SearchEmpresa(TextInput):
 
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -84,16 +84,16 @@ class MyTextInput1(TextInput):
     def on_suggestion_text(self, instance, value):
         if not value:
             return
-        super(MyTextInput1, self).on_suggestion_text(instance, value)
+        super(SearchEmpresa, self).on_suggestion_text(instance, value)
 
     def keyboard_on_key_down(self, window, keycode, text, modifiers):
         '''
         '''
-        if self.suggestion_text and keycode[1] == 'enter':  # complete suggestion_text
+        if self.suggestion_text and (keycode[1] == 'enter' or keycode[1] == 'tab'):  # complete suggestion_text
             self.insert_text(self.suggestion_text + ' ')
             self.suggestion_text = ''
             return True
-        return super(MyTextInput1, self).keyboard_on_key_down(window, keycode, text, modifiers)
+        return super(SearchEmpresa, self).keyboard_on_key_down(window, keycode, text, modifiers)
 
 
 class search_empresa(MDApp):
@@ -136,10 +136,10 @@ class search_empresa(MDApp):
     #         print ('Index Error')
 
     def build(self):
-        # return MyTextInput1()
+        # return SearchEmpresa()
         return Builder.load_file('search/search_empresa.kv')
 #         return Builder.load_string('''
-# MyTextInput1
+# SearchEmpresa
 #     readonly:False
 #     multiline:False
 #     focus: True
