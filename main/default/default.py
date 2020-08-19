@@ -39,6 +39,7 @@ class MainWid(BoxLayout):
             self.ids.scrn_mngr.current = 'scrn_empresa'
         else:
             pass
+        pass
 
     def acerca_de(self, instance):
         url = "https://github.com/Soichi-Tamashiro"

@@ -8,11 +8,12 @@ from signin.signin import SigninWindow
 from kivy.app import App
 from kivymd.app import MDApp
 from kivy.uix.boxlayout import BoxLayout
-
+from kivy.core.window import Window
 from kivy.config import Config
 
 # Config.set("graphics", "width", "1920")
 # Config.set("graphics", "height", "1080")
+Window.fullscreen = False
 Config.set("graphics", "minimum_width", "800")
 Config.set("graphics", "minimum_height", "600")
 
