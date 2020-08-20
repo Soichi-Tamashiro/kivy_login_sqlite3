@@ -40,15 +40,20 @@ class SearchEmpresa(TextInput):
         print("Dirección: ", self.DB_PATH)
         con = sqlite3.connect(self.DB_PATH)
         cursor = con.cursor()
-        cursor.execute(
-            'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
+        # cursor.execute(
+        #     'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
+        cursor.execute("SELECT Empresa from Data")
         data_file = cursor.fetchall()
-        empresa_array = [""] * len(data_file[2])
+        # empresa_array = [""] * len(data_file)
+        empresa_array = []
+        print(data_file)
         for i in range(len(data_file)):
-            # empresa_array[i] = str(data_file[i][2])
-            empresa_array.insert(i, str(data_file[i][2]))
+            # empresa_array[i] = str(data_file[i][0])
+            # empresa_array.insert(i, str(data_file[i]))
+            empresa_array = empresa_array + data_file[i][0].split(" ")
             print(empresa_array[i])
-        self.word_list = empresa_array
+        self.word_list = list(dict.fromkeys(empresa_array))
+        print(self.word_list)
 
     def update_empresa_db(self, **kwargs):
         con = sqlite3.connect(self.DB_PATH)
@@ -57,10 +62,12 @@ class SearchEmpresa(TextInput):
             'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
         data_file = cursor.fetchall()
         empresa_array = [""] * len(data_file[2])
+        # empresa_array = []
         for i in range(len(data_file)):
             # empresa_array[i] = str(data_file[i][2])
             empresa_array.insert(i, str(data_file[i][2]))
-            print(empresa_array[i])
+            # empresa_array = empresa_array + data_file[i][2].split(" ")
+            # print(empresa_array[i])
         self.word_list = empresa_array
 
     def on_text_validate(self):

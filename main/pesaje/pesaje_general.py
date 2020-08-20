@@ -201,8 +201,9 @@ class PesajeGeneral(BoxLayout):
             self.ids.nuevo_pesaje_button.disabled = True
             con = sqlite3.connect(self.DB_PATH)
             cursor = con.cursor()
-            cursor.execute(
-                'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
+            # cursor.execute(
+            #     'select ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto from Data')
+            cursor.execute('SELECT * FROM Data') 
             data_file = cursor.fetchall()
             numero_de_registros = str(len(data_file))
             print("Cantidad de registros : " + numero_de_registros)
