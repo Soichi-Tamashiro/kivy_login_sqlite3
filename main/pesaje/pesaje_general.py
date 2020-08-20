@@ -144,11 +144,13 @@ class PesajeGeneral(BoxLayout):
                 datos = (ID, Ticket, Empresa, Bascula, Placa, CicloPesaje,
                          FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto)
                 #
-                s1 = 'INSERT INTO Data(ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto)'
-                #
-                s2 = 'VALUES(%s,"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")' % datos
+                s1 = "INSERT INTO Data values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
+                # s1 = 'INSERT INTO Data(ID, Ticket,Empresa, Bascula, Placa, CicloPesaje, FechaEntrada, PesoEntrada, FechaSalida, PesoSalida, PesoNeto)'
+                # #
+                # s2 = 'VALUES(%s,"%s","%s","%s","%s","%s","%s","%s","%s","%s","%s")' % datos
                 try:
-                    cursor.execute(s1 + ' ' + s2)
+                    # cursor.execute(s1 + ' ' + s2)
+                    cursor.execute(s1, datos)
                     con.commit()
                     con.close()
                     # update buttons

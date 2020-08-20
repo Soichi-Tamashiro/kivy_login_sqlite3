@@ -1,9 +1,9 @@
+from kivy.animation import Animation
+from kivy.uix.floatlayout import FloatLayout
+from kivy.app import App
 import kivy
 kivy.require('1.9.0')
 
-from kivy.app import App
-from kivy.uix.floatlayout import FloatLayout
-from kivy.animation import Animation
 
 class MainScreen(FloatLayout):
     def __init__(self):
@@ -18,6 +18,7 @@ class MainScreen(FloatLayout):
         else:
             print('not adding sidebar')
 
+
 class SideBar(FloatLayout):
 
     def on_touch_down(self, touch):
@@ -26,10 +27,12 @@ class SideBar(FloatLayout):
         else:
             print('outside side')
 
+
 class side_bar(App):
 
     def build(self):
         return MainScreen()
+
 
 if __name__ == '__main__':
     side_bar().run()
