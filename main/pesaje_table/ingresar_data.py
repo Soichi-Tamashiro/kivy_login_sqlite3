@@ -66,6 +66,7 @@ class IngresarData(BoxLayout):
         print(the_date)
         self.ids.fecha_entrada_field.text = str(
             the_date.day) + '/' + str(the_date.month) + '/' + str(the_date.year)
+        self.ids.peso_entrada_field.focus = True
         return self.ids.fecha_entrada_field.text
 
     def update_fecha_entrada(self, *args):

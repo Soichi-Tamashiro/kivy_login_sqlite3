@@ -155,7 +155,9 @@
             MyTextInput:
                 id: ciclo_pesaje_field
                 hint_text: '1'
-                on_text_validate: fecha_entrada_field.focus = True
+                on_text_validate:
+                    # fecha_entrada_field.focus = True
+                    root.show_datepicker_1()
         PesajeGeneralCuadroIndex1:
             size_hint_x: None
             width: root.size[0]*.13
